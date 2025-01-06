@@ -90,7 +90,7 @@ function App() {
                 className="mx-auto"
               />
               <a
-                href={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com{serverResponse.videoUrl}`}
+                href={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com${serverResponse.videoUrl}`}
                 download
                 className="block mt-2 text-blue-500 hover:underline"
               >
