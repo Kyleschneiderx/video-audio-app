@@ -8,6 +8,7 @@ function App() {
   const [processing, setProcessing] = useState(false);
   const [serverResponse, setServerResponse] = useState(null);
 
+
   const handleVideoChange = (e) => {
     setVideoFile(e.target.files[0]);
   };
@@ -83,14 +84,15 @@ function App() {
 
           {serverResponse.videoUrl && (
             <div className="mt-4">
+              <div>{serverResponse.videoUrl}</div>
               <video
-                src={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com/${serverResponse.videoUrl}`}
+                src={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com${serverResponse.videoUrl}`}
                 controls
                 width="400"
                 className="mx-auto"
               />
               <a
-                href={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com/${serverResponse.videoUrl}`}
+                href={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com${serverResponse.videoUrl}`}
                 download
                 className="block mt-2 text-blue-500 hover:underline"
               >
@@ -103,12 +105,12 @@ function App() {
             <div className="mt-4">
               <h4 className="text-md font-medium text-gray-700">Thumbnail</h4>
               <img
-                src={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com/${serverResponse.thumbnailUrl}`}
+                src={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com${serverResponse.thumbnailUrl}`}
                 alt="Thumbnail"
                 className="w-48 mx-auto"
               />
               <a
-                href={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com/${serverResponse.thumbnailUrl}`}
+                href={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com${serverResponse.thumbnailUrl}`}
                 download
                 className="block mt-2 text-blue-500 hover:underline"
               >
