@@ -61,7 +61,11 @@ app.post('/api/process', upload.fields([
 });
 
 // Serve the uploads folder statically
-app.use('/uploads', express.static(UPLOADS_DIR));
+app.use('/uploads', express.static(UPLOADS_DIR, {
+  setHeaders: (res, path) => {
+    res.setHeader('Content-Disposition', `attachment; filename="${path.basename(path)}"`);
+  }
+}));
 
 app.use(express.static('client/build'));
 
