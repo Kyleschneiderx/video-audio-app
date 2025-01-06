@@ -50,7 +50,7 @@ function createThumbnail(videoPath) {
 
     ffmpeg(videoPath)
       .screenshots({
-        timestamps: [10],         // at 10 seconds
+        timestamps: [5],         // at 10 seconds
         filename: `${baseName}_thumbnail.jpg`,
         folder: outputDir,
         size: '405x225'
