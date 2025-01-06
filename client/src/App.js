@@ -23,13 +23,13 @@ function App() {
     }
     setProcessing(true);
     setServerResponse(null);
-
+  
     const formData = new FormData();
     formData.append('video', videoFile);
     formData.append('audio', audioFile);
-
+  
     try {
-      const res = await axios.post('http://localhost:5001/api/process', formData, {
+      const res = await axios.post('/api/process', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
