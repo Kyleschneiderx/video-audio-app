@@ -84,13 +84,13 @@ function App() {
           {serverResponse.videoUrl && (
             <div className="mt-4">
               <video
-                src={`http://localhost:5001${serverResponse.videoUrl}`}
+                src={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com/${serverResponse.videoUrl}`}
                 controls
                 width="400"
                 className="mx-auto"
               />
               <a
-                href={`http://localhost:5001${serverResponse.videoUrl}`}
+                href={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com/{serverResponse.videoUrl}`}
                 download
                 className="block mt-2 text-blue-500 hover:underline"
               >
@@ -103,12 +103,12 @@ function App() {
             <div className="mt-4">
               <h4 className="text-md font-medium text-gray-700">Thumbnail</h4>
               <img
-                src={`http://localhost:5001${serverResponse.thumbnailUrl}`}
+                src={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com/${serverResponse.thumbnailUrl}`}
                 alt="Thumbnail"
                 className="w-48 mx-auto"
               />
               <a
-                href={`http://localhost:5001${serverResponse.thumbnailUrl}`}
+                href={`https://tranquil-hollows-65929-d05e0a5022ea.herokuapp.com/${serverResponse.thumbnailUrl}`}
                 download
                 className="block mt-2 text-blue-500 hover:underline"
               >
