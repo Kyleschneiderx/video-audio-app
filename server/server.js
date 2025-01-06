@@ -63,14 +63,14 @@ app.post('/api/process', upload.fields([
 // Serve the uploads folder statically
 app.use('/uploads', express.static(UPLOADS_DIR));
 
-const path = require('path');
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static('client/build'));
 
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-});
+if(process.env.NODE_ENV === 'production'){
+    const path = require('path');
+    app.get('/*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'../client','build','index.html'))
+    })
+}
 
 // Start the server
 const PORT = process.env.PORT || 5001;
