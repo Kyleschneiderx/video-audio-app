@@ -7,6 +7,7 @@ const fs = require('fs');
 const { replaceVideoAudio2, createThumbnail } = require('./videoUtils');
 
 // Create an uploads directory if it doesn’t exist
+// Create an uploads directory if it doesn’t exist
 const UPLOADS_DIR = path.join(__dirname, 'uploads');
 if (!fs.existsSync(UPLOADS_DIR)) {
   fs.mkdirSync(UPLOADS_DIR);
@@ -27,6 +28,13 @@ const upload = multer({ storage });
 
 const app = express();
 app.use(cors()); // Allow requests from your deployed frontend
+
+// Serve the uploads folder statically
+app.use('/uploads', express.static(UPLOADS_DIR, {
+  setHeaders: (res, filePath) => {
+    res.setHeader('Content-Disposition', `attachment; filename="${path.basename(filePath)}"`);
+  }
+}));
 
 // Endpoint: upload video + audio, process them
 app.post('/api/process', upload.fields([
@@ -61,11 +69,11 @@ app.post('/api/process', upload.fields([
 });
 
 // Serve the uploads folder statically
-app.use('/uploads', express.static(UPLOADS_DIR, {
-  setHeaders: (res, path) => {
-    res.setHeader('Content-Disposition', `attachment; filename="${path.basename(path)}"`);
-  }
-}));
+// app.use('/uploads', express.static(UPLOADS_DIR, {
+//   setHeaders: (res, path) => {
+//     res.setHeader('Content-Disposition', `attachment; filename="${path.basename(path)}"`);
+//   }
+// }));
 
 app.use(express.static('client/build'));
 
